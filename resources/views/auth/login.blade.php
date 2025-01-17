@@ -23,8 +23,7 @@
         <div class="login-box animated fadeInDown">
 
             {{-- <div class="login-logo"></div> --}}
-            <img src="https://scontent.fjsr17-1.fna.fbcdn.net/v/t39.30808-6/469246963_568669569414739_7545359842987209728_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Cjzbb9sKKakQ7kNvgFe20l8&_nc_zt=23&_nc_ht=scontent.fjsr17-1.fna&_nc_gid=A7c6DzyKefsWX-6p_R3V0xB&oh=00_AYAhuL7U9q-OZDz6fVHpEKnF789lJvWcnf10yZBbyyDRuw&oe=67721272"
-                style="height: 120px; width:399px;" alt="chalghuri">
+            <img src="upload/chalghuri_logo.png" style="height: 120px; width:399px;" alt="chalghuri">
             <div class="login-body">
                 <div class="login-title"><strong>Log In</strong> to your account</div>
                 <form action="" class="form-horizontal" method="post">

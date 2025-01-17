@@ -82,6 +82,7 @@
                                         <th width="50">Photo</th>
                                         <th width="150">Name</th>
                                         <th width="50">Designation</th>
+                                        <th width="50">Role</th>
                                         <th width="200">Mobile</th>
                                         <th width="200">Email</th>
                                         <th width="100">Joining Date</th>
@@ -100,16 +101,18 @@
                                             @endif()
                                             <td><strong>{{ $value->name }}</strong></td>
                                             <td><strong>{{ $value->designation }}</strong></td>
+                                            <td><strong>{{ $value->role }}</strong></td>
                                             <td><strong>{{ $value->mobile }}</strong></td>
                                             <td><strong>{{ $value->email }}</strong></td>
                                             <td><strong>{{ date('d-m-Y H:i A', strtotime($value->birthday)) }}</strong>
                                             </td>
                                             <td>
-                                                <a href="{{ url('employee/details/' . $value->id) }}"
-                                                    class="btn btn-default btn-rounded btn-sm">Details</a>
+
                                                 <a href="{{ url('employee/edit/' . $value->id) }}"
                                                     class="btn btn-default btn-rounded btn-sm"><span
                                                         class="fa fa-pencil"></a>
+                                                <a href="{{ url('employee/details/' . $value->id) }}"
+                                                    class="btn btn-default btn-rounded btn-sm">Details</a>
                                                 <form action="{{ url('employee/delete/' . $value->id) }}" method="POST"
                                                     style="display: inline;">
                                                     @csrf

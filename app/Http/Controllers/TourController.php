@@ -25,9 +25,10 @@ class TourController extends Controller
         $tour = new TourModel;
         $tour->tour_name = trim($request->tour_name);
         $tour->tour_description = trim($request->tour_description);
+        $tour->tour_fee = trim($request->tour_fee);
         $tour->tour_location = trim($request->tour_location);
         $tour->tour_date = trim($request->tour_date);
-        $tour->is_finished = 0;
+        $tour->is_finished = trim($request->is_finished);
         
         $tour->save();
 
@@ -64,8 +65,10 @@ public function update($id, Request $request) {
         $tour = TourModel::getSingle($id);
         $tour->tour_name = trim($request->tour_name);
         $tour->tour_description = trim($request->tour_description);
+        $tour->tour_fee = trim($request->tour_fee);
         $tour->tour_location = trim($request->tour_location);
         $tour->tour_date = trim($request->tour_date);
+        $tour->is_finished = trim($request->is_finished);
         $tour->save();
 
         return redirect("tour/list")->with('success', 'Tour successfully Edited');

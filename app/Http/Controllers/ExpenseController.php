@@ -24,6 +24,7 @@ class ExpenseController extends Controller
         $expense->amount=trim($request->amount);
         $expense->unit=trim($request->unit);
         $expense->number_of_purchase=trim($request->number_of_purchase);
+        $expense->remarks=trim($request->remarks);
 
         $expense->save();
  
@@ -56,6 +57,7 @@ class ExpenseController extends Controller
         $expense->amount=trim($request->amount);
         $expense->unit=trim($request->unit);
         $expense->number_of_purchase=trim($request->number_of_purchase);
+        $expense->remarks=trim($request->remarks);
         $expense->save();
        
     
@@ -68,5 +70,20 @@ class ExpenseController extends Controller
         }
 
         
+    }
+
+    public function delete($id)
+    {
+        $expense = ExpenseModel::getSingle($id);
+    
+        if (!$expense) {
+             return back()->with('error', 'Member not found.');
+     }
+    
+     ExpenseModel::where('id', $expense->id)->delete();
+    
+        $expense->delete();
+    
+        return back()->with('succsess', 'Expense deleted successfully from the tour');
     }
 }

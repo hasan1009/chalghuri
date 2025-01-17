@@ -78,6 +78,7 @@
                                         <th>Description</th>
                                         <th>Tour Location</th>
                                         <th>Tour Date</th>
+                                        <th>Tour Fee</th>
                                         <th>Status</th>
                                         <th width=20%>Action</th>
 
@@ -92,6 +93,7 @@
                                             <td><strong>{{ $value->tour_location }}</strong></td>
 
                                             <td><strong>{{ date('d-m-Y H:i A', strtotime($value->tour_date)) }}</strong>
+                                            <td><strong>{{ $value->tour_fee }} tk</strong></td>
                                             <td>
                                                 <span
                                                     class="label {{ $value->is_finished ? 'label-danger' : 'label-success' }}">

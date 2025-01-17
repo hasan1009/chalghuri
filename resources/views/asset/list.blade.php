@@ -18,7 +18,6 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Search Asset</h3>
                     </div>
-
                     <div class="panel-body">
                         <form method="get" action="">
                             <div class="card-body">
@@ -95,7 +94,7 @@
                                                 </td>
                                             @endif()
                                             <td><strong>{{ $value->name }}</strong></td>
-                                            <td><strong>{{ $value->description }}</strong></td>
+                                            <td class="ellipsis"><strong>{{ $value->description }}</strong></td>
                                             <td><strong>{{ $value->quantity }}</strong></td>
                                             <td><strong>{{ $value->unit }}</strong></td>
                                             <td><strong>{{ number_format($value->unit_price, 2) }} BDT</strong></td>
@@ -140,7 +139,14 @@
 
     </div>
 @endsection
-
+<style>
+    td.ellipsis {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
 
 @section('script')
 @endsection

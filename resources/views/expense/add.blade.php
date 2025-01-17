@@ -65,12 +65,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Amount of Purchase </label>
+                                <label class="col-md-3 col-xs-12 control-label">Purchase Quantity</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
                                         <input type="number" class="form-control" value="{{ old('number_of_purchase') }}"
-                                            placeholder="Amount of Purchase" name="number_of_purchase">
+                                            placeholder="0.0" name="number_of_purchase">
                                     </div>
                                     <div style="color:red">{{ $errors->first('number_of_purchase') }}</div>
                                 </div>
@@ -107,6 +107,18 @@
                                     </select>
                                 </div>
                                 <div style="color:red">{{ $errors->first('unit') }}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Remarks</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-book"></span></span>
+                                        <input type="text" class="form-control" value="{{ old('remarks') }}"
+                                            placeholder="Remarks" name="remarks">
+                                    </div>
+                                    <div style="color:red">{{ $errors->first('remarks') }}</div>
+                                </div>
                             </div>
 
 

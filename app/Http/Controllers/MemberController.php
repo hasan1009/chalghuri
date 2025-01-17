@@ -15,6 +15,7 @@ class MemberController extends Controller
 
 
     public function insert(Request $request)  {
+        //dd($request->all());
 
         $request->validate([
             'mobile' => 'required|digits:11|unique:employee,mobile',
@@ -28,6 +29,7 @@ class MemberController extends Controller
         $member->mobile=trim($request->mobile);
         $member->address=trim($request->address);
         $member->paid_amount=trim($request->paid_amount);
+        $member->discount = trim($request->discount) !== '' ? trim($request->discount) : 0.0;
 
         if(!empty($request->file('profile_pic'))){
          $ext=$request->file('profile_pic')->getClientOriginalExtension();
@@ -68,6 +70,7 @@ class MemberController extends Controller
         $member->mobile=trim($request->mobile);
         $member->address=trim($request->address);
         $member->paid_amount=trim($request->paid_amount);
+        $member->discount=trim($request->discount);
 
         if(!empty($request->file('profile_pic'))){
 

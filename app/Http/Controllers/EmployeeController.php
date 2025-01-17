@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EmployeeModel;
+use App\Models\RoleModel;
 use Str;
 class EmployeeController extends Controller
 {
     public function add()  {
         
         $data['header_title']="Add New Admin";
+        $data['getRole']=RoleModel::getRole();
         return view('employee.add', $data);
     }
 
@@ -30,6 +32,7 @@ public function insert(Request $request)
         $user->email = trim($request->email);
         $user->mobile = trim($request->mobile);
         $user->designation = trim($request->designation);
+        $user->role = trim($request->role);
         $user->present_address = trim($request->present_address);
         $user->permenent_address = trim($request->permenent_address);
         $user->nid = trim($request->nid);
@@ -76,6 +79,7 @@ public function insert(Request $request)
 
         if(!empty($data['getRecord'])){
             $data['header_title']="Edit Employee";
+            $data['getRole']=RoleModel::getRole();
             return view('employee.edit', $data);
 
         }else{
@@ -113,6 +117,7 @@ public function insert(Request $request)
         $user->permenent_address = trim($request->permenent_address);
         $user->nid = trim($request->nid);
         $user->designation = trim($request->designation);
+        $user->role = trim($request->role);
         $user->birthday = trim($request->birthday);
         $user->gender = trim($request->gender);
         $user->nominee_name = trim($request->nominee_name);

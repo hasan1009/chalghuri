@@ -8,6 +8,8 @@ use App\Http\Controllers\AssetController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\RoleController;
+
 
 
 
@@ -70,7 +72,13 @@ Route::group(['middleware'=>'admin'],function(){
       Route::post('expense/edit/{id}',[ExpenseController::class,'update']);
       Route::delete('expense/delete/{id}',[ExpenseController::class,'delete']);
 
-    
+    ///Employee Role
+    Route::get('role/add',[RoleController::class,'add']);
+    Route::post('role/add',[RoleController::class,'insert']);
+    Route::get('role/list',[RoleController::class,'list']);
+    Route::get('role/edit/{id}',[RoleController::class,'edit']);
+    Route::post('role/edit/{id}',[RoleController::class,'update']);
+    Route::delete('role/delete/{id}',[RoleController::class,'delete']);
 
     ///Dashboard
     Route::get('backend/dashboard',[DashboardController::class,'dashboard']);       

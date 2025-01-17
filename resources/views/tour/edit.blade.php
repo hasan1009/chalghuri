@@ -61,6 +61,46 @@
                                     <div style="color:red">{{ $errors->first('tour_location') }}</div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Tour Fee (Per Person) <span
+                                        style="color:red;">*</span></label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-money"></span></span>
+                                        <input type="number" class="form-control"
+                                            value="{{ old('tour_fee', $getRecord->tour_fee) }}" required placeholder="0.0"
+                                            name="tour_fee">
+                                    </div>
+                                    <div style="color:red">{{ $errors->first('tour_fee') }}</div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Tour Staus <span
+                                        style="color:red;">*</span></label>
+                                <div class="col-md-6 col-xs-12">
+                                    <select name="is_finished" class="form-control" required>
+                                        <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
+
+                                        <option {{ old('is_finished', $getRecord->is_finished) == '0' ? 'selected' : '' }}
+                                            value="0">Upcomming
+                                        </option>
+
+                                        <option {{ old('is_finished', $getRecord->is_finished) == '1' ? 'selected' : '' }}
+                                            value="1">
+                                            Finished
+                                        </option>
+
+
+
+                                    </select>
+
+                                </div>
+                                <div style="color:red">{{ $errors->first('is_finished') }}</div>
+                            </div>
+
                             @php
                                 use Carbon\Carbon;
                                 $getRecord->tour_date = Carbon::parse($getRecord->tour_date)->format('Y-m-d');
@@ -72,7 +112,8 @@
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                         <input type="date" class="form-control"
-                                            value="{{ old('tour_date', $getRecord->tour_date) }}" required name="tour_date">
+                                            value="{{ old('tour_date', $getRecord->tour_date) }}" required
+                                            name="tour_date">
                                     </div>
                                     <div style="color:red">{{ $errors->first('tour_date') }}</div>
                                 </div>

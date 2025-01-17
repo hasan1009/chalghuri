@@ -8,16 +8,15 @@
         </li>
         <li class="xn-profile">
             <a href="#" class="profile-mini">
-                <img src="{{ url('public/assets/images/users/avatar.jpg') }}" alt="John Doe" />
+                <img src="{{ url('public/assets/images/users/avatar.jpg') }}" alt="Chal Ghuri" />
             </a>
             <div class="profile">
                 <div class="profile-image">
-                    <img src="{{ url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTL9m3D4iSe0EuKKAka-30sKeiLl2S_3-lc4A&s') }}"
-                        alt="John Doe" />
+                    <img src="{{ url('upload/chalghuri_logo.png') }}" alt="Chalghuri" />
                 </div>
                 <div class="profile-data">
                     <div class="profile-data-name">Chal Ghuri</div>
-                    <div class="profile-data-title">Travel Company</div>
+                    <div class="profile-data-title">Eco Tourism </div>
                 </div>
                 <div class="profile-controls">
                     <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -35,6 +34,13 @@
             <ul>
                 <li><a href="{{ url('admins/add') }}"><span class="fa fa-plus"></span> Add Admin</a></li>
                 <li><a href="{{ url('admins/list') }}"><span class="fa fa-bars"></span> Admin List</a></li>
+            </ul>
+        </li>
+        <li class="xn-openable">
+            <a href="#"><span class="fa fa-retweet"></span> <span class="xn-text">Employee Role</span></a>
+            <ul>
+                <li><a href="{{ url('role/add') }}"><span class="fa fa-plus"></span> Add Role</a></li>
+                <li><a href="{{ url('role/list') }}"><span class="fa fa-bars"></span> Role List</a></li>
             </ul>
         </li>
         <li class="xn-openable">

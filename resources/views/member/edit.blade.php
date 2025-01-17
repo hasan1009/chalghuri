@@ -68,6 +68,20 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Discount</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-money"></span></span>
+                                        <input type="number" class="form-control"
+                                            value="{{ old('discount', $getRecord->discount) }}" placeholder="0.0"
+                                            name="discount">
+                                    </div>
+                                    <div style="color:red">{{ $errors->first('discount') }}</div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
                                 <label class="col-md-3 col-xs-12 control-label">Address <span
                                         style="color:red;">*</span></label>
                                 <div class="col-md-6 col-xs-12">

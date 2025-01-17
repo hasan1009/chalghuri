@@ -56,11 +56,23 @@
                                 <label class="col-md-3 col-xs-12 control-label">Paid Amount</label>
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
+                                        <span class="input-group-addon"><span class="fa fa-money"></span></span>
                                         <input type="number" class="form-control" value="{{ old('paid_amount') }}"
-                                            placeholder="Amount Paid" name="paid_amount">
+                                            placeholder="0.0" name="paid_amount">
                                     </div>
                                     <div style="color:red">{{ $errors->first('paid_amount') }}</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Discount</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-money"></span></span>
+                                        <input type="number" class="form-control" value="{{ old('discount') }}"
+                                            placeholder="0.0" name="discount">
+                                    </div>
+                                    <div style="color:red">{{ $errors->first('discount') }}</div>
                                 </div>
                             </div>
 
@@ -81,12 +93,13 @@
                                 <div class="col-md-6 col-xs-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="fa fa-image"></span></span>
-                                        <input type="file" class="form-control" style="padding: 5px" name="profile_pic"
-                                            required>
+                                        <input type="file" class="form-control" style="padding: 5px" name="profile_pic">
                                     </div>
                                     <div style="color:red">{{ $errors->first('profile_pic') }}</div>
                                 </div>
                             </div>
+
+
                             <input type="hidden", name="tour_id", value="{{ $getRecord->id }}">
                         </div>
 

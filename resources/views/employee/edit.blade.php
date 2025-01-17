@@ -152,6 +152,23 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Employee Role </label>
+                                <div class="col-md-6 col-xs-12">
+                                    <select name="role" class="form-control" required>
+                                        <option value="" disabled selected>Select Role</option>
+                                        @foreach ($getRole as $value)
+                                            <option value="{{ $value->name }}"
+                                                {{ old('role', $getRecord->role) == $value->name ? 'selected' : '' }}>
+                                                {{ $value->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
+                                <div style="color:red">{{ $errors->first('role') }}</div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-md-3 col-xs-12 control-label">Gender</label>
                                 <div class="col-md-6 col-xs-12">
                                     <select name="gender" class="form-control" required>
