@@ -14,7 +14,6 @@
     <div class="page-content-wrap">
         <div class="row">
             <div class="col-md-12">
-                @include('_message')
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Search Employee</h3>
@@ -64,13 +63,19 @@
 
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-12">
                 @include('_message')
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Admin List (Total : {{ $getRecord->total() }})</h3>
+                        <a href="{{ url('employee/print') }}" class="btn btn-info pull-right" style="margin-left: 5px"
+                            target="_blank">
+                            <i class="fa fas fa-print"></i> Print
+                        </a>
                         <a href="{{ url('employee/add') }}" class="btn btn-danger pull-right">+ Add Employee</a>
+
                     </div>
                     <div class="panel-body panel-body-table">
 
@@ -85,7 +90,9 @@
                                         <th width="50">Role</th>
                                         <th width="200">Mobile</th>
                                         <th width="200">Email</th>
-                                        <th width="100">Joining Date</th>
+                                        <th width="100">Total Installment</th>
+                                        <th width="100">Total Payment</th>
+                                        <th width="100">Total Due</th>
                                         <th width=20%>Action</th>
 
                                     </tr>
@@ -104,8 +111,11 @@
                                             <td><strong>{{ $value->role }}</strong></td>
                                             <td><strong>{{ $value->mobile }}</strong></td>
                                             <td><strong>{{ $value->email }}</strong></td>
-                                            <td><strong>{{ date('d-m-Y H:i A', strtotime($value->birthday)) }}</strong>
-                                            </td>
+                                            <td><strong>{{ $getTotalInstallment }}</strong>
+                                            <td><strong>{{ number_format($value->total_collected ?? 0, 2) }}
+                                                    Taka</strong></td>
+                                            <td><strong>{{ number_format($getTotalInstallment - ($value->total_collected ?? 0), 2) }}
+                                                    Taka</strong></td>
                                             <td>
 
                                                 <a href="{{ url('employee/edit/' . $value->id) }}"

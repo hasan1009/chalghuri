@@ -63,6 +63,9 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Asset List (Total : {{ $getRecord->total() }})</h3>
+                        <a href="{{ url('asset/print') }}" class="btn btn-info pull-right" style="margin-left: 5px"
+                            target="_blank">
+                            <i class="fa fas fa-print"></i> Print </a>
                         <a href="{{ url('asset/add') }}" class="btn btn-danger pull-right">+ Add Asset</a>
                     </div>
                     <div class="panel-body panel-body-table">
@@ -71,39 +74,39 @@
                             <table class="table table-bordered table-striped table-actions">
                                 <thead>
                                     <tr>
-                                        <th width="50">id</th>
-                                        <th width="50">Photo</th>
-                                        <th width="150">Asset Name</th>
-                                        <th width="50">Description</th>
-                                        <th width="150">Quantity</th>
-                                        <th width="200">Unit</th>
-                                        <th width="200">Unit Price</th>
-                                        <th width="100">Total Price</th>
-                                        <th width="100">Puchase Date</th>
+                                        <th>Sl</th>
+                                        <th>Photo</th>
+                                        <th>Asset Name</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Price</th>
+                                        <th>Puchase Date</th>
                                         <th width=20%>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($getRecord as $value)
+                                    @foreach ($getRecord as $key => $value)
                                         <tr id="trow_1">
-                                            <td class="text-center">{{ $value->id }}</td>
+                                            <td class="text-center">{{ $loop->iteration }}</td>
                                             @if (!empty($value->getProfileDirect()))
                                                 <td><img src="{{ $value->getProfileDirect() }}" alt=""
                                                         style="width:60px; height:60px; border-radius: 50%; border: 2px solid #ddd;">
                                                 </td>
                                             @endif()
-                                            <td><strong>{{ $value->name }}</strong></td>
-                                            <td class="ellipsis"><strong>{{ $value->description }}</strong></td>
-                                            <td><strong>{{ $value->quantity }}</strong></td>
-                                            <td><strong>{{ $value->unit }}</strong></td>
-                                            <td><strong>{{ number_format($value->unit_price, 2) }} BDT</strong></td>
+                                            <td>{{ $value->name }}</td>
+                                            <td class="ellipsis">{{ $value->description }}</td>
+                                            <td>{{ $value->quantity }}</td>
+                                            <td>{{ $value->unit }}</td>
+                                            <td>{{ number_format($value->unit_price, 2) }} BDT</td>
 
                                             @php
                                                 $totalPrice = $value->unit_price * $value->quantity;
                                             @endphp
-                                            <td><strong>{{ number_format($totalPrice, 2) }} BDT</strong></td>
-                                            <td><strong>{{ date('d-m-Y H:i A', strtotime($value->purchase_date)) }}</strong>
+                                            <td>{{ number_format($totalPrice, 2) }} BDT</td>
+                                            <td>{{ date('d-m-Y H:i A', strtotime($value->purchase_date)) }}
                                             </td>
                                             <td>
                                                 <a href="{{ url('asset/edit/' . $value->id) }}"

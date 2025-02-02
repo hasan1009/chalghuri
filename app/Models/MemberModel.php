@@ -18,8 +18,9 @@ class MemberModel extends Model
 
     static public function getMember($id){
 
-        $return= self::select('tour_member.*');
-        $return=$return->orderBy('id', 'asc')
+        $return= self::select('tour_member.*', 'tour.tour_name as tour_name', 'tour.tour_date as tourdate')
+        ->join('tour', 'tour.id', '=', 'tour_member.tour_id')
+        ->orderBy('id', 'asc')
         ->where('tour_member.tour_id', '=', $id)
         ->paginate(20);
         return $return;

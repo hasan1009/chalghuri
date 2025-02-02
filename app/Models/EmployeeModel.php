@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Request;
+use DB;
 class EmployeeModel extends Model
 {
 
@@ -16,39 +17,52 @@ class EmployeeModel extends Model
         return self::find($id);
     }
 
-    static public function getEmployee(){
+    static public function getEmployee()
+{
+    $return = self::select(
+        'employee.id',
+        'employee.name',
+        'employee.profile_pic',
+        'employee.designation',
+        'employee.role',
+        'employee.mobile',
+        'employee.email',
+        \DB::raw('SUM(collection.collected_amount) as total_collected')
+    )
+        ->leftJoin('collection', 'collection.employee_id', '=', 'employee.id')
+        ->groupBy(
+            'employee.id',
+            'employee.name',
+            'employee.profile_pic',
+            'employee.designation',
+            'employee.role',
+            'employee.mobile',
+            'employee.email'
+        );
 
-        $return= self::select('employee.*');
-        if(!empty(Request::get('name'))){
+    if (!empty(Request::get('name'))) {
+        $return = $return->where('name', 'like', '%' . Request::get('name') . '%');
+    }
 
-            $return=$return->where('name', 'like','%'.Request::get('name').'%');
+    if (!empty(Request::get('mobile'))) {
+        $return = $return->where('mobile', 'like', '%' . Request::get('mobile') . '%');
+    }
 
-        }
-        
-        if(!empty(Request::get('mobile'))){
+    if (!empty(Request::get('email'))) {
+        $return = $return->where('email', 'like', '%' . Request::get('email') . '%');
+    }
 
-            $return=$return->where('mobile', 'like','%'.Request::get('mobile').'%');
+    if (!empty(Request::get('id'))) {
+        $return = $return->where('id', '=', Request::get('id'));
+    }
 
-        }
-
-        if(!empty(Request::get('email'))){
-
-            $return=$return->where('email', 'like','%'.Request::get('email').'%');
-
-        }
-
-        if(!empty(Request::get('id'))){
-
-            $return=$return->where('id','=',Request::get('id'));
-
-        }
-
-       
-        $return=$return->orderBy('id', 'asc')
+    $return = $return->orderBy('id', 'asc')
         ->paginate(20);
 
-        return $return;
-    }
+    return $return;
+}
+    
+    
 
     public function getProfileDirect() {
         if(!empty($this->profile_pic) && file_exists('upload/profile/'.$this->profile_pic)){

@@ -19,8 +19,9 @@ class ExpenseModel extends Model
 
     static public function getExpense($id){
 
-        $return= self::select('expense.*');
-        $return=$return->orderBy('id', 'asc')
+        $return= self::select('expense.*', 'tour.tour_name as tour_name', 'tour.tour_date as tourdate')
+        ->join('tour', 'tour.id', '=', 'expense.tour_id') 
+        ->orderBy('id', 'asc')
         ->where('expense.tour_id', '=', $id)
         ->get();
         

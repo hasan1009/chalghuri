@@ -36,13 +36,7 @@
                 <li><a href="{{ url('admins/list') }}"><span class="fa fa-bars"></span> Admin List</a></li>
             </ul>
         </li>
-        <li class="xn-openable">
-            <a href="#"><span class="fa fa-retweet"></span> <span class="xn-text">Employee Role</span></a>
-            <ul>
-                <li><a href="{{ url('role/add') }}"><span class="fa fa-plus"></span> Add Role</a></li>
-                <li><a href="{{ url('role/list') }}"><span class="fa fa-bars"></span> Role List</a></li>
-            </ul>
-        </li>
+
         <li class="xn-openable">
             <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Employee</span></a>
             <ul>
@@ -52,20 +46,31 @@
         </li>
 
         <li class="xn-openable">
-            <a href="#"><span class="fa fa-gift"></span> <span class="xn-text">Assets</span></a>
+            <a href="#"><span class="fa fa-money"></span> <span class="xn-text">Monthly Installment</span></a>
             <ul>
-                <li><a href="{{ url('asset/add') }}"><span class="fa fa-plus"></span> Add Asset</a></li>
-                <li><a href="{{ url('asset/list') }}"><span class="fa fa-bars"></span> Asset List</a></li>
-            </ul>
+                <li><a href="{{ url('installment/add') }}"><span class="fa fa-plus"></span> Add Installment</a></li>
+                <li><a href="{{ url('installment/list') }}"><span class="fa fa-bars"></span> Installment List</a></li>
+                {{-- <li><a href="{{ url('installment/list') }}"><span class="fa fa-money"></span> Installment
+                        Collection</a> --}}
         </li>
-        <li class="xn-title">Business</li>
-        <li class="xn-openable">
-            <a href="#"><span class="fa fa-plane"></span> <span class="xn-text">Tours</span></a>
-            <ul>
-                <li><a href="{{ url('tour/add') }}"><span class="fa fa-plus"></span> Add Tour</a></li>
-                <li><a href="{{ url('tour/list') }}"><span class="fa fa-bars"></span> Tour List</a></li>
-            </ul>
-        </li>
+    </ul>
+    </li>
+
+    <li class="xn-openable">
+        <a href="#"><span class="fa fa-gift"></span> <span class="xn-text">Assets</span></a>
+        <ul>
+            <li><a href="{{ url('asset/add') }}"><span class="fa fa-plus"></span> Add Asset</a></li>
+            <li><a href="{{ url('asset/list') }}"><span class="fa fa-bars"></span> Asset List</a></li>
+        </ul>
+    </li>
+    <li class="xn-title">Business</li>
+    <li class="xn-openable">
+        <a href="#"><span class="fa fa-plane"></span> <span class="xn-text">Tours</span></a>
+        <ul>
+            <li><a href="{{ url('tour/add') }}"><span class="fa fa-plus"></span> Add Tour</a></li>
+            <li><a href="{{ url('tour/list') }}"><span class="fa fa-bars"></span> Tour List</a></li>
+        </ul>
+    </li>
 
 
     </ul>

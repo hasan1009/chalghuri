@@ -122,47 +122,31 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label class="col-md-3 col-xs-12 control-label">Designation <span
                                         style="color:red;">*</span></label>
                                 <div class="col-md-6 col-xs-12">
                                     <select name="designation" class="form-control" required>
                                         <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
                                         <option>Select Designation </option>
-                                        <option {{ old('designation') == 'Managing Director' ? 'selected' : '' }}
-                                            value="Managing Director">Managing director
+                                        <option {{ old('designation') == 'Director' ? 'selected' : '' }} value="Director">
+                                            Director
                                         </option>
-
-                                        <option {{ old('designation') == 'Deputy Managing director' ? 'selected' : '' }}
-                                            value="Managing Director">Deputy Managing Director
-                                        </option>
-
-                                        <option {{ old('designation') == 'General Member' ? 'selected' : '' }}
-                                            value="General Member">General Member
-                                        </option>
-
                                     </select>
-
                                 </div>
                                 <div style="color:red">{{ $errors->first('designation') }}</div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Employee Role <span
-                                        style="color:red;">*</span></label>
+                                <label class="col-md-3 col-xs-12 control-label">Employee Role </label>
                                 <div class="col-md-6 col-xs-12">
-                                    <select name="role" class="form-control" required>
-                                        <option value="" disabled selected>Select Role</option>
-                                        @foreach ($getRole as $value)
-                                            <option value="{{ $value->name }}"
-                                                {{ old('role') == $value->name ? 'selected' : '' }}>
-                                                {{ $value->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                        <input type="text" class="form-control" value="{{ old('role') }}"
+                                            placeholder="Employee Role" name="role">
+                                    </div>
+                                    <div style="color:red">{{ $errors->first('role') }}</div>
                                 </div>
-                                <div style="color:red">{{ $errors->first('role') }}</div>
                             </div>
 
                             <div class="form-group">

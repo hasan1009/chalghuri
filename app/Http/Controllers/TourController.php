@@ -97,10 +97,24 @@ public function details($id)  {
     $data['getExpense'] = ExpenseModel::getExpense($id);
     
         $data['header_title']="Tour Details";
-        return view('tour.details', $data);
+        return view('tour.details', $data);  
+}
 
-   
-   
+public function expenseprint($id)  {
+    $expenses =  ExpenseModel::getExpense($id);
+    $data['tour_name'] = $expenses->isNotEmpty() ? $expenses->first()->tour_name : 'N/A';
+    $data['tour_date'] = $expenses->isNotEmpty() ? $expenses->first()->tourdate : 'N/A';
+    $data['getExpense'] = $expenses;
+    return view('tour.expenseprint',$data);
+}
+
+public function memberprint($id)  {
+    $data['getRecord'] = TourModel::getSingle($id);
+    $member =  MemberModel::getMember($id);
+    $data['tour_name'] = $member->isNotEmpty() ? $member->first()->tour_name : 'N/A';
+    $data['tour_date'] = $member->isNotEmpty() ? $member->first()->tourdate : 'N/A';
+    $data['getMember'] = $member;
+    return view('tour.memberprint',$data);
 }
 
 }

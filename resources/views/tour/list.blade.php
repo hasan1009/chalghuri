@@ -102,11 +102,12 @@
                                             </td>
 
                                             <td>
-                                                <a href="{{ url('tour/details/' . $value->id) }}"
-                                                    class="btn btn-default btn-rounded btn-sm">Details</a>
+
                                                 <a href="{{ url('tour/edit/' . $value->id) }}"
                                                     class="btn btn-default btn-rounded btn-sm"><span
                                                         class="fa fa-pencil"></a>
+                                                <a href="{{ url('tour/details/' . $value->id) }}"
+                                                    class="btn btn-default btn-rounded btn-sm">Details</a>
                                                 <form action="{{ url('tour/delete/' . $value->id) }}" method="POST"
                                                     style="display: inline;">
                                                     @csrf

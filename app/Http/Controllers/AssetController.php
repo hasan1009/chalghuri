@@ -115,4 +115,12 @@ public function update($id, Request $request) {
     return redirect('asset/list')->with('success', 'Asset deleted successfully');
 }
 
+
+public function print()  {
+
+    $data['getRecord']=AssetModel::getAsset();
+    $data['header_title']="Print Asset List";
+    return view('asset.print', $data);
+    
+}
 }

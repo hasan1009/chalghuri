@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\EmployeeModel;
 use App\Models\RoleModel;
+use App\Models\InstallmentModel;
+
 use Str;
 class EmployeeController extends Controller
 {
@@ -31,7 +33,7 @@ public function insert(Request $request)
         $user->name = trim($request->name);
         $user->email = trim($request->email);
         $user->mobile = trim($request->mobile);
-        $user->designation = trim($request->designation);
+        $user->designation = "Director";
         $user->role = trim($request->role);
         $user->present_address = trim($request->present_address);
         $user->permenent_address = trim($request->permenent_address);
@@ -56,7 +58,7 @@ public function insert(Request $request)
         $user->save();
 
         // Redirect with success message
-        return redirect("employee/list")->with('success', 'An employee successfully added');
+        return redirect("employee/list")->with('succsess', 'An employee successfully added');
     } catch (\Exception $e) {
         // Handle errors
         return redirect("employee/list")->with('error', 'Something went wrong: ' . $e->getMessage());
@@ -67,6 +69,7 @@ public function insert(Request $request)
      public function list()  {
         
         $data['getRecord']=EmployeeModel::getEmployee();
+        $data['getTotalInstallment']=InstallmentModel::totalInstallment();
         $data['header_title']="Employee List";
         return view('employee.list', $data);
     }
@@ -144,7 +147,7 @@ public function insert(Request $request)
 
            $user->save();
 
-           return redirect("employee/list")->with('success', 'Admin successfully edited');
+           return redirect("employee/list")->with('succsess', 'Admin successfully edited');
 
 
         
@@ -163,5 +166,15 @@ public function insert(Request $request)
     $user->delete();
 
     return redirect('employee/list')->with('succsess', 'Employee deleted successfully');
+}
+
+
+public function print()  {
+
+    $data['getRecord']=EmployeeModel::getEmployee();
+    $data['getTotalInstallment']=InstallmentModel::totalInstallment();
+    $data['header_title']="Print Employee List";
+    return view('employee.print', $data);
+    
 }
 }

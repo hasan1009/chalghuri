@@ -25,17 +25,7 @@ class TourModel extends Model
 
         }
         
-        // if(!empty(Request::get('mobile'))){
-
-        //     $return=$return->where('mobile', 'like','%'.Request::get('mobile').'%');
-
-        // }
-
-        // if(!empty(Request::get('email'))){
-
-        //     $return=$return->where('email', 'like','%'.Request::get('email').'%');
-
-        // }
+     
 
         if(!empty(Request::get('id'))){
 

@@ -125,47 +125,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 col-xs-12 control-label">Designation</label>
-                                <div class="col-md-6 col-xs-12">
-                                    <select name="designation" class="form-control" required>
-                                        <span class="input-group-addon"><span class="fa fa-unlock-alt"></span></span>
-
-                                        <option
-                                            {{ old('designation', $getRecord->designation) == 'Managing Director' ? 'selected' : '' }}
-                                            value="Managing Director">Managing director
-                                        </option>
-
-                                        <option
-                                            {{ old('designation', $getRecord->designation) == 'Deputy Managing director' ? 'selected' : '' }}
-                                            value="Managing Director">Deputy Managing Director
-                                        </option>
-
-                                        <option
-                                            {{ old('designation', $getRecord->designation) == 'General Member' ? 'selected' : '' }}
-                                            value="General Member">General Member
-                                        </option>
-
-                                    </select>
-
-                                </div>
-                                <div style="color:red">{{ $errors->first('designation') }}</div>
-                            </div>
-
-                            <div class="form-group">
                                 <label class="col-md-3 col-xs-12 control-label">Employee Role </label>
                                 <div class="col-md-6 col-xs-12">
-                                    <select name="role" class="form-control" required>
-                                        <option value="" disabled selected>Select Role</option>
-                                        @foreach ($getRole as $value)
-                                            <option value="{{ $value->name }}"
-                                                {{ old('role', $getRecord->role) == $value->name ? 'selected' : '' }}>
-                                                {{ $value->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                        <input type="text" class="form-control"
+                                            value="{{ old('role', $getRecord->role) }}" placeholder="Employee Role"
+                                            name="role">
+                                    </div>
+                                    <div style="color:red">{{ $errors->first('role', $getRecord->role) }}</div>
                                 </div>
-                                <div style="color:red">{{ $errors->first('role') }}</div>
                             </div>
 
                             <div class="form-group">
